@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}AbhiYTScraper {% endblock %}
+
+{% block content %}
+<div class="comments1">
+    <div class="main">
+        <h1>{{title}}</h1>
+        <table>
+            <tr>
+                <th>Sr No</th>
+                <th>Commentor Name</th>
+                <th>Comments</th>
+            </tr>
+            {% for value in csv %}
+                <tr>
+                    <td>{{ value[0] }}</td>
+                    <td>{{ value[2] }}</td>
+                    <td id="comm">{{ value[3] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %}

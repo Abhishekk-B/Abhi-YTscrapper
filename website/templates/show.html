@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}AbhiYTScraper {% endblock %}
+
+{% block content %}
+<div class="videoshow">
+    <div class="main">
+        <h1>YouTube channel : {{product.upper()}}</h1>
+        <h2>Subscribers : {{subscriber[0].split(" ")[0]}}</h2>
+        <h3>Click below  to load the comments</h3>
+        <a href="{{ url_for('comment', channel = product) }}" class="commentlink">COMMENTS</a>
+        <div id="rel">
+            <form action="{{ url_for('value', channel = product) }}" method="POST">
+            <input type="submit" name="btn" value = "Reload" class="inp1"><br>
+            </form>
+        </div>
+        <div class="data">
+            {% for i in numbers %}
+                <div class="white">
+                    <div class="back">
+                        <div class="infov">
+                            <p class="viewclass">{{view[i-1]}}</p>
+                            <a href="{{ url_for('newcomment', channel = product, k =i) }}" class="viewclass">Video Comment</a>
+                        </div>
+                    </div>
+                    <div class="mainData">
+                        <img src="../static/images/{{product}}/{{product}}-{{i}}.jpeg" alt="">
+                        <p>{{ titles[i-1] }}</p>
+                        <a href="{{ links[i-1] }}" target=”_blank”>View video</a>
+                    </div>
+                </div>
+            {% endfor%}
+        </div>
+    </div>
+</div>
+{% endblock %}

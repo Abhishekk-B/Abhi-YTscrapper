@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}AbhiYTScraper {% endblock %}
+
+{% block content %}
+<div class="mainPage">
+    <div class="main">
+        <h1>Welcome to AbhiYTScrapper</h1>
+            <div class="form">
+                <form action="/" method="POST">
+                    <Label>Enter the product name</Label><br>
+                    <input type="text" name = "product"><br>
+                    <input type="submit" name="submit" value = "SUBMIT" class="inp"><br>
+                    <p class="product">{{product}}</p> <br>
+                </form>
+                    <a href="{{ url_for('value', channel = product) }}"><button class="show">Show Info</button></a>
+            </div>
+            <div class="data">
+                {% for i in numbers %}
+                    <div class="mainData">
+                        <img src="../static/images/{{channel}}/{{channel}}-{{i}}.jpeg" alt="">
+                        <p>{{ titles[i] }}</p>
+                        <a href="{{ links[i] }}">Video {{i}}</a>
+                    </div>
+                {% endfor%}
+            </div>
+    </div>
+</div>
+<script src="../static/JS/script.js"></script>
+{% endblock %}
